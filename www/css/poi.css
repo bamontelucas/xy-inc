@@ -1,0 +1,36 @@
+body {
+    position: relative;
+    padding-top: 80px; /* baseado em: http://getbootstrap.com/examples/theme/ */
+    padding-bottom: 30px;
+    z-index: 0;
+}
+a.btn {
+    text-transform: none; /* o tema "Paper" coloca o texto de todos os botões em caixa alta */
+}
+.full-screen-loading {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(0,0,0,.5);
+}
+.full-screen-loading > .loading-icon {
+    position: relative;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 25vh;
+    color: white;
+    text-align: center;
+}
+.spin {
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sistema desenhado para cadastro e consulta de Pontos de Interesse (POIs).">
+    <meta name="author" content="Lucas Bamonte Corrêa">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Pontos de Interesse</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/poi.css">
+</head>
+<body data-spy="scroll" data-target="#navbar" data-offset="90">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home">Pontos de Interesse</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#proximidade">POIs por perto</a></li>
+                    <li><a href="#lista">Todos os POIs</a></li>
+                    <li><a href="#cadastrar">Cadastrar um POI</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron" id="home">
+            <h1>Pontos de interesse (POIs)</h1>
+            <p>
+                Com este sistema você pode ver todos os pontos de interesse cadastrados em nossa base de dados 
+                e ainda encontrar aqueles que estão pertinho de você.
+            </p>
+            <p>
+                <a class="btn btn-primary" href="#lista">Ver todos os POIs</a>
+                <a class="btn btn-primary" href="#proximidade">Ver POIs por perto</a>
+            </p>
+            <p>
+                Conhece um ponto de interesse e não achou ele aqui? <a href="#cadastrar">Clique aqui e cadastre para que todos vejam!</a> 
+            </p>
+        </div>
+
+        <div id="proximidade" class="text-center">
+            <div class="page-header">
+                <h2>
+                    POIs por perto
+                    <small id="fake-pos">
+                        simulando posição do GPS (x,y) = (<span class="x"></span>,<span class="y"></span>)
+                    </small>
+                </h2>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <label for="distance">POIs num raio de até:</label>
+                </div>
+                <input type="number" minvalue="0" id="distance" class="form-control text-center" placeholder="00">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" onclick="near_pois()">Buscar</button>
+                </div>
+            </div>
+
+            <span class="glyphicon glyphicon-refresh spin loading" style="display:none;"></span>
+            <table class="table data table-striped" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Ponto de interesse</th>
+                        <th>Coordenada X</th>
+                        <th>Coordenada Y</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="lista" class="text-center">
+            <div class="page-header">
+                <h2>
+                    Todos os POIs
+                    <small>
+                        <button class="btn btn-sm btn-default pull-right" onclick="all_pois()">
+                            Recarregar 
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                    </small>
+                </h2>
+            </div>
+            <span class="glyphicon glyphicon-refresh spin loading"></span>
+            <table class="table data table-striped">
+                <thead>
+                    <tr>
+                        <th>Ponto de interesse</th>
+                        <th>Coordenada X</th>
+                        <th>Coordenada Y</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="cadastrar">
+            <div class="page-header">
+                <h2>Cadastrar um POI</h2>
+            </div>
+            <form class="well" id="form-cadastro">
+                <fieldset>
+                    <legend>Preencha os campos abaixo</legend>
+                    
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" id="poi-name" class="form-control" placeholder="Descreva o ponto de interesse" required>
+                    </div>
+                    
+                    <div class="form-group">    
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label for="coord-x">Coordenada X</label>
+                                <input type="number" minvalue="0" id="coord-x" class="form-control" placeholder="Digite um número positivo" required>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="coord-y">Coordenada Y</label>
+                                <input type="number" minvalue="0" id="coord-y" class="form-control" placeholder="Digite um número positivo" required>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <button class="btn btn-block btn-primary btn-lg">Cadastrar POI</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/velocity.min.js"></script>
+    <script src="js/poi.js"></script>
+</body>
+</html>
