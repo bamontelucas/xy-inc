@@ -9,13 +9,14 @@ Para rodar o serviço basta chamá-lo na linha de comando:
 ```
 node poi.js
 ```
+Após isso, basta acessar `localhost:3000`
 
 ## Roteamento
 O serviço abre a porta `3000` para acesso.
 * `localhost:3000`: redireciona para o diretório `www` do projeto, que contém os arquivos estáticos;
 * `GET` em `localhost:3000/poi`:
-..* sem parâmetros: lista todos os POIs;
-..* com os parâmetros `x`, `y` e `distance`: lista somente os POIs dentro do raio `distance` de `x` e `y`
+    * sem parâmetros: lista todos os POIs;
+    * com os parâmetros `x`, `y` e `distance`: lista somente os POIs dentro do raio `distance` de `x` e `y`
 * `POST` em `localhost:3000/poi`: cadastra um novo ponto de interesse 
 
 ## Tecnologias no front-end
